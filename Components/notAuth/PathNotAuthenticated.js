@@ -22,8 +22,8 @@ const SignUp = (props) => {
     <View>
       <Text>Componente SignUp</Text>
       <Button
-        title="Navegador a las SingIN"
-        onPress={() => navigation.navigate('SignIn')}
+        title="Back"
+        onPress={() => navigation.goBack()}
       />
     </View>
   );
