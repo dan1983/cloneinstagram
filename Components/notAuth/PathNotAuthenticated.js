@@ -31,9 +31,17 @@ const SignUp = (props) => {
 const PathNotAutenticated = createStackNavigator({
   SignIn: {
     screen: SignIn,
+    navigationOptions: {
+      title: 'SignIn to Instaclone',
+    },
+
   },
   SignUp: {
     screen: SignUp,
+    navigationOptions: {
+      title: 'Instaclone',
+
+    },
   },
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { PathNotAutenticated } from './Components/notAuth/PathNotAuthenticated';
+import { PathAuthenticated } from './Components/Auth/PathAuthenticated';
 
 
 export default class App extends React.Component {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <PathNotAutenticated />
+        <PathAuthenticated />
 
       </View>
     );
