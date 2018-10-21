@@ -5,7 +5,9 @@ import { StackHome } from './StackHome';
 import Add from './Add';
 import Profile from './Profile';
 import Search from './Search';
-import Follow from './Follow';
+
+import { StackSearch } from './StackSearch';
+import { TabFollow } from './TabFollow';
 
 const PathAuthenticated = createBottomTabNavigator({
   Home: {
@@ -13,7 +15,7 @@ const PathAuthenticated = createBottomTabNavigator({
 
   },
   Search: {
-    screen: Search,
+    screen: StackSearch,
 
   },
   Add: {
@@ -21,7 +23,7 @@ const PathAuthenticated = createBottomTabNavigator({
 
   },
   Follow: {
-    screen: Follow,
+    screen: TabFollow,
   },
   Profile: {
     screen: Profile,

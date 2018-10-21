@@ -1,49 +1,16 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
-const SignIn = (props) => {
-  const { navigation } = props;
 
-  return (
-    <View>
-      <Text>Componente SignIn</Text>
-      <Button
-        title="Navegador a las SingUp"
-        onPress={() => navigation.navigate('SignUp')}
-      />
-    </View>
-  );
-};
-const SignUp = (props) => {
-  const { navigation } = props;
+const PathNotAutenticated = createStackNavigator(
+  {
+    SignIn: { screen: SignIn },
 
-  return (
-    <View>
-      <Text>Componente SignUp</Text>
-      <Button
-        title="Back"
-        onPress={() => navigation.goBack()}
-      />
-    </View>
-  );
-};
-const PathNotAutenticated = createStackNavigator({
-  SignIn: {
-    screen: SignIn,
-    navigationOptions: {
-      title: 'SignIn to Instaclone',
-    },
 
+    SignUp: { screen: SignUp },
   },
-  SignUp: {
-    screen: SignUp,
-    navigationOptions: {
-      title: 'Instaclone',
+);
 
-    },
-  },
-
-
-});
 export { PathNotAutenticated };

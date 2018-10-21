@@ -7,7 +7,7 @@ export default class Profile extends Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Text> Author </Text>
         <Button
           title="Post"
@@ -17,3 +17,12 @@ export default class Profile extends Component {
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#2c3e50',
+
+  },
+});

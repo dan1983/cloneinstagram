@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import {
+  Text, View, Button, StyleSheet,
+} from 'react-native';
 
 export default class Post extends Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Text> POST </Text>
         <Button
           title="Comments"
@@ -19,3 +21,14 @@ export default class Post extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+});

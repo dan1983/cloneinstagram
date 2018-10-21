@@ -1,15 +1,13 @@
 import { createStackNavigator } from 'react-navigation';
-import Home from './Home';
+import Search from './Search';
 import Profile from './Profile';
 import Post from './Post';
 import Comments from './Comments';
 
-const StackHome = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'SignIn to Instaclone',
-    },
+
+const StackSearch = createStackNavigator({
+  Search: {
+    screen: Search,
   },
   Profile: {
     screen: Profile,
@@ -26,9 +24,7 @@ const StackHome = createStackNavigator({
 
 
 });
-
-
-StackHome.navigationOptions = ({ navigation }) => {
+StackSearch.navigationOptions = ({ navigation }) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
 
   const navigationOptions = {};
@@ -38,5 +34,4 @@ StackHome.navigationOptions = ({ navigation }) => {
   return navigationOptions;
 };
 
-
-export { StackHome };
+export { StackSearch };
