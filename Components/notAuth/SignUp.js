@@ -3,6 +3,7 @@ import {
   Text, StyleSheet, View, Button,
 } from 'react-native';
 import { connect } from 'react-redux';
+import SignUpForm from "../Form/SignUpForm";
 
 class SignUp extends Component {
   render() {
@@ -10,6 +11,7 @@ class SignUp extends Component {
     return (
       <View style={styles.container}>
         <Text> SignUp </Text>
+        <SignUpForm />
         <Button
           title="Aumentar"
           onPress={() => this.props.aumentar}

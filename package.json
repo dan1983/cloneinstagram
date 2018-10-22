@@ -24,6 +24,7 @@
     "react-navigation": "^2.16.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",
+    "redux-form": "^7.4.2",
     "ws": "^6.0.0"
   }
 }
