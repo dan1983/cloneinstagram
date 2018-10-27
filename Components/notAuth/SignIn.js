@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Text, View, Button,
 } from 'react-native';
+import SignInForm from './Form/SignInForm';
 
 
 export default class SignIn extends Component {
@@ -10,6 +11,7 @@ export default class SignIn extends Component {
     return (
       <View>
         <Text> SignIn </Text>
+        <SignInForm />
         <Button
           title="SingUp"
           onPress={() => { navigation.navigate('SignUp'); }}

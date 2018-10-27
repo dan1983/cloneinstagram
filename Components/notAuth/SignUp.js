@@ -3,7 +3,7 @@ import {
   Text, StyleSheet, View, Button,
 } from 'react-native';
 import { connect } from 'react-redux';
-import SignUpForm from "../Form/SignUpForm";
+import SignUpForm from './Form/SignUpForm';
 
 class SignUp extends Component {
   render() {
