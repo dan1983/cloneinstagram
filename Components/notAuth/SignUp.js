@@ -10,12 +10,8 @@ class SignUp extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text> SignUp </Text>
+        <Text>SignUp</Text>
         <SignUpForm />
-        <Button
-          title="Aumentar"
-          onPress={() => this.props.aumentar}
-        />
         <Button
           title="SignIn"
           onPress={() => navigation.navigate('SignIn')}
@@ -28,6 +24,10 @@ class SignUp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+
 
   },
 });

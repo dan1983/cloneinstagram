@@ -6,8 +6,10 @@ import { Field, reduxForm } from 'redux-form';
 
 
 const fieldName = props => (
-  <View>
+  <View style={styles.textInput}>
+
     <TextInput
+      underlineColorAndroid="rgba(0,0,0,0)"
       placeholder={props.ph}
       onChangeText={props.input.onChange}
       value={props.input.value}
@@ -61,7 +63,7 @@ const SignUpForm = props => (
     <Field name="email" component={fieldName} ph="email" />
     <Field name="password" component={fieldName} ph="******" />
     <Field name="confirmPassword" component={fieldName} ph="******" />
-    <Text>Redux Form </Text>
+
     <Button
       title="Sigin"
       onPress={props.handleSubmit(
@@ -74,4 +76,20 @@ const SignUpForm = props => (
   </View>
 );
 
+const styles = StyleSheet.create({
+  textInput: {
+    marginBottom: 16,
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+
+  linea: {
+    backgroundColor: '#DCDCDC',
+    height: 2,
+
+  },
+  errors: {
+    color: '#FF0000',
+  },
+});
 export default reduxForm({ form: 'SignUpFomr', validate })(SignUpForm);
