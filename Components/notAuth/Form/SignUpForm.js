@@ -3,7 +3,7 @@ import {
   View, Text, StyleSheet, TextInput, Button,
 } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-
+import { auth } from '../../../Store/Services/Firebase';
 
 const fieldName = props => (
   <View style={styles.textInput}>
@@ -68,8 +68,19 @@ const SignUpForm = props => (
       title="Sigin"
       onPress={props.handleSubmit(
         (values) => {
-          console.log(values);
-          values;
+          auth
+            .createUserWithEmailAndPassword(values.email, values.password)
+            .then((success) => {
+              console.log(success);
+            })
+            .catch((error) => {
+            // Handle Errors here.
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorCode);
+              console.log(errorMessage);
+            // ...
+            });
         },
       )}
     />

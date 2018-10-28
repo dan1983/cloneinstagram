@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { reducer as form } from 'redux-form';
 
 
@@ -10,6 +10,16 @@ const reducerPrueba = (state = [0], action) => {
       return state;
   }
 };
+const miMiddleware = store => next => (action) => {
+  console.log('Se ejecuta el middleware');
+  next(action);
+};
+
+const ultimoMiddleware = store => next => (action) => {
+  console.log('último middleware');
+  next(action);
+};
+
 
 const reducers = combineReducers({
   reducerPrueba,
@@ -18,7 +28,7 @@ const reducers = combineReducers({
 });
 
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(miMiddleware, ultimoMiddleware));
 
 
 export default store;
