@@ -6,19 +6,25 @@ import { connect } from 'react-redux';
 import SignUpForm from './Form/SignUpForm';
 
 class SignUp extends Component {
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <Text>SignUp</Text>
-        <SignUpForm />
-        <Button
-          title="SignIn"
-          onPress={() => navigation.navigate('SignIn')}
-        />
-      </View>
-    );
-  }
+registerUser = (values) => {
+  console.log('siiii');
+  console.log(values);
+  this.props.register(values);
+}
+
+render() {
+  const { navigation } = this.props;
+  return (
+    <View style={styles.container}>
+      <Text>SignUp</Text>
+      <SignUpForm register={this.registerUser} />
+      <Button
+        title="SignIn"
+        onPress={() => navigation.navigate('SignIn')}
+      />
+    </View>
+  );
+}
 }
 
 const styles = StyleSheet.create({
@@ -37,8 +43,8 @@ const mapStateProps = state => ({
 });
 
 const mapDispatchProps = dispatch => ({
-  aumentar: () => {
-    dispatch({ type: 'AUMENTAR_REDUCER_PRUEBA' });
+  register: (values) => {
+    dispatch({ type: 'REGISTER', data: values });
   },
 });
 

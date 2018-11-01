@@ -1,13 +1,12 @@
 
 
 import * as firebase from 'firebase';
+import { config } from './config';
 
 
-const config = {
-
-};
+const conf = config;
 
 
-firebase.initializeApp(config);
+firebase.initializeApp(conf);
 
 export const auth = firebase.auth();

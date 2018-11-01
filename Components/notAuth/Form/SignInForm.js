@@ -46,10 +46,8 @@ const validate = (values) => {
   return errors;
 };
 
-const SignInForm = (props) => {
-  console.log(props);
-  return (
-    <View>
+const SignInForm = props => (
+  <View>
       <Field name="email" component={fieldNombre} ph="email@email.com" />
       <Field name="password" component={fieldNombre} ph="******" />
       <Text>Redux Form</Text>
@@ -60,8 +58,7 @@ const SignInForm = (props) => {
         })}
       />
     </View>
-  );
-};
+);
 
 const styles = StyleSheet.create({
   textInput: {

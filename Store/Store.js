@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { reducer as form } from 'redux-form';
+import createMiddleware from 'redux-saga';
+import functionPrimaria from './Sagas/Sagas';
 
 
 const reducerPrueba = (state = [0], action) => {
@@ -10,16 +12,8 @@ const reducerPrueba = (state = [0], action) => {
       return state;
   }
 };
-const miMiddleware = store => next => (action) => {
-  console.log('Se ejecuta el middleware');
-  next(action);
-};
 
-const ultimoMiddleware = store => next => (action) => {
-  console.log('último middleware');
-  next(action);
-};
-
+const sagaMiddleware = createMiddleware();
 
 const reducers = combineReducers({
   reducerPrueba,
@@ -28,7 +22,8 @@ const reducers = combineReducers({
 });
 
 
-const store = createStore(reducers, applyMiddleware(miMiddleware, ultimoMiddleware));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
+sagaMiddleware.run(functionPrimaria);
 
 export default store;
