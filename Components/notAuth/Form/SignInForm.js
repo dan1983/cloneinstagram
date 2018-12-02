@@ -53,9 +53,7 @@ const SignInForm = props => (
     <Text>Redux Form</Text>
     <Button
       title="SignIn"
-      onPress={props.handleSubmit((values) => {
-         
-        })}
+      onPress={props.handleSubmit(props.login)}
     />
   </View>
 );

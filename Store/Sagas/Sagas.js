@@ -30,6 +30,15 @@ const registroEnBaseDeDatos = ({ uid, name,email,}) => (
   })
 );
 
+const loginEnFirebase = ({ email, password }) => (
+  /**
+   * Autentificamos el usuario ( Video 49 Min 13 )
+   * https://firebase.google.com/docs/auth/web/password-auth
+   * Utilizamos la función signInWithEmailAndPassword de firebase para hacer el login  
+   */
+  auth.signInWithEmailAndPassword(email, password)
+      .then( success => JSON.parse(JSON.stringify(success)) )
+);
 
 
 function* generateRegister(values) {
@@ -50,6 +59,20 @@ function* generateRegister(values) {
   }
 }
 
+function* sagaLogin(values){
+  try {
+   
+    const result = yield call(loginEnFirebase,values.data);
+    console.log("logeado",result );
+
+  } catch (error) {
+    console.log("peta",error );
+  }
+  
+ 
+}
+
 export default function* functionPrimaria() {
   yield takeEvery('REGISTER', generateRegister);
+  yield takeEvery('LOGIN', sagaLogin);
 }

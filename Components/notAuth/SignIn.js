@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import {
   Text, View, Button, StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import SignInForm from './Form/SignInForm';
 
 
-export default class SignIn extends Component {
+class SignIn extends Component {
+  sigInUser = (values) => {
+    this.props.login(values);
+  }
   render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Text> SignIn </Text>
-        <SignInForm />
+        <SignInForm login={this.sigInUser}
+        
+        />
         <Button
           title="SingUp"
           onPress={() => { navigation.navigate('SignUp'); }}
@@ -31,3 +37,21 @@ const styles = StyleSheet.create({
 
   },
 });
+
+const mapStateToProps = (state) => ({
+  prop:state.prop,
+  
+})
+
+const mapDispatchToProps = dispatch => ({
+  login:(data) =>{
+    dispatch({ type: 'LOGIN', data });
+
+  }
+});
+
+
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignIn);
