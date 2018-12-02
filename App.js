@@ -10,6 +10,9 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = { name: 'instagram clone' };
+    console.ignoredYellowBox = [
+      'Setting a timer',
+    ];
   }
 
   render() {

@@ -1,4 +1,4 @@
 node_modules/**/*
 .expo/*
 npm-debug.*
-Services/config.js
+Services/config.*

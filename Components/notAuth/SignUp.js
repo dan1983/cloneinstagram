@@ -7,8 +7,6 @@ import SignUpForm from './Form/SignUpForm';
 
 class SignUp extends Component {
 registerUser = (values) => {
-  console.log('siiii');
-  console.log(values);
   this.props.register(values);
 }
 

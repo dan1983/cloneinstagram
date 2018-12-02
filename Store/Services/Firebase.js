@@ -10,3 +10,4 @@ const conf = config;
 firebase.initializeApp(conf);
 
 export const auth = firebase.auth();
+export const dataBase = firebase.database();

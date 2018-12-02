@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
 const fieldNombre = (props) => {
-  console.log(props);
+
   return (
     <View style={styles.textInput}>
       <TextInput
@@ -37,7 +37,7 @@ const validate = (values) => {
 
   if (!values.password) {
     errors.password = 'requerido';
-  } else if (values.password.length < 5) {
+  } else if (values.password.length < 3) {
     errors.password = 'Must be at least 5 characters';
   } else if (values.password.length > 15) {
     errors.password = 'Must be less than 8 characters';
@@ -48,16 +48,16 @@ const validate = (values) => {
 
 const SignInForm = props => (
   <View>
-      <Field name="email" component={fieldNombre} ph="email@email.com" />
-      <Field name="password" component={fieldNombre} ph="******" />
-      <Text>Redux Form</Text>
-      <Button
-        title="SignIn"
-        onPress={props.handleSubmit((values) => {
-          console.log(values);
+    <Field name="email" component={fieldNombre} ph="email@email.com" />
+    <Field name="password" component={fieldNombre} ph="******" />
+    <Text>Redux Form</Text>
+    <Button
+      title="SignIn"
+      onPress={props.handleSubmit((values) => {
+         
         })}
-      />
-    </View>
+    />
+  </View>
 );
 
 const styles = StyleSheet.create({

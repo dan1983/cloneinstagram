@@ -28,9 +28,9 @@ const validate = (values) => {
   const errors = {};
   if (!values.name) {
     errors.name = 'required';
-  } else if (values.name.length < 5) {
+  } else if (values.name.length < 4) {
     errors.name = 'Must be at least 5 characters';
-  } else if (values.name.length > 10) {
+  } else if (values.name.length > 8) {
     errors.name = 'Must be less than 10 characters';
   }
 
@@ -40,13 +40,15 @@ const validate = (values) => {
     errors.email = 'invalid email';
   }
 
+  /*
   if (!values.password) {
     errors.password = 'required';
-  } else if (values.password.length < 5) {
-    errors.password = 'Must be at least 5 characters';
-  } else if (values.password.length > 8) {
-    errors.password = 'Must be less than 8 characters';
+  } else if (values.password.length < 4) {
+    errors.password = 'Must be at least 4 characters';
+  } else if (values.password.length > 1) {
+    errors.password = 'Must be less than 1 characters';
   }
+  */
 
   if (!values.confirmPassword) {
     errors.confirmPassword = 'required';
