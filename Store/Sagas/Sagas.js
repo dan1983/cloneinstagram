@@ -1,5 +1,6 @@
 import { takeEvery, call } from 'redux-saga/effects';
 import { auth , dataBase} from '../Services/Firebase';
+import CONST from '../Services/CONST';
 
 
 
@@ -73,6 +74,6 @@ function* sagaLogin(values){
 }
 
 export default function* functionPrimaria() {
-  yield takeEvery('REGISTER', generateRegister);
-  yield takeEvery('LOGIN', sagaLogin);
+  yield takeEvery(CONST.REGISTER, generateRegister);
+  yield takeEvery(CONST.LOGIN, sagaLogin);
 }

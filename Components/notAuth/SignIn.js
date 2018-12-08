@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import SignInForm from './Form/SignInForm';
+import { actionLogin } from '../../Store/Services/ACTIONS';
+
 
 
 class SignIn extends Component {
@@ -45,7 +47,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   login:(data) =>{
-    dispatch({ type: 'LOGIN', data });
+    dispatch(actionLogin(data));
 
   }
 });
