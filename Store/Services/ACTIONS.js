@@ -10,3 +10,7 @@ export const actionLogin = values =>({
     data: values
 });
 
+export const actionCloseSession = () => ({
+    type:CONST.CLOSE_SESSION
+})
+

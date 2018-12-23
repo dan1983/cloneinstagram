@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "expo": "^30.0.1",
-    "firebase": "^5.5.6",
+    "firebase": "^5.7.0",
     "react": "16.3.1",
     "react-native": "^0.55.4",
-    "react-navigation": "^2.16.0",
+    "react-navigation": "^2.18.3",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
     "redux-saga": "^0.16.2",
-    "ws": "^6.0.0"
+    "ws": "^6.1.2"
   }
 }

@@ -13,4 +13,4 @@ const PathNotAutenticated = createStackNavigator(
   },
 );
 
-export { PathNotAutenticated };
+export  { PathNotAutenticated };

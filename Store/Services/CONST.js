@@ -1,6 +1,8 @@
 const CONST = {
     REGISTER : 'REGISTER',
-    LOGIN :'LOGIN'
+    LOGIN :'LOGIN',
+    SET_SESSION: 'SET_SESSION',
+    CLOSE_SESSION :'CLOSE_SESSION'
 }
 
 export default CONST;
