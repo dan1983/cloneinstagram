@@ -3,6 +3,7 @@ import {View,Text, StyleSheet } from 'react-native'
 import {connect} from 'react-redux'
 import { auth } from './Store/Services/Firebase';
 import { PathNotAutenticated } from './Components/notAuth/PathNotAuthenticated';
+import { PathAutenticated } from './Components/Auth/PathAuthenticated';
 import { actionSetSession, actionCloseSession} from './Store/Services/ACTIONS';
 
  class Selector extends Component {
@@ -13,8 +14,9 @@ import { actionSetSession, actionCloseSession} from './Store/Services/ACTIONS';
      
   render() {
     return (
-      <View style={styles.c}>
-            <PathNotAutenticated/>
+      <View style={styles.container}>
+      {this.props.usuario? <PathAutenticated/> : <PathNotAutenticated/> }
+            
       </View>
     )
   }
@@ -30,7 +32,7 @@ const styles =StyleSheet.create({
 
 const mapStateToProps = (state)=>{
     return {
-        prop:state.prop
+        user:state.reducerSesion
     }
 
 } 

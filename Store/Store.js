@@ -5,7 +5,7 @@ import functionPrimaria from './Sagas/Sagas';
 import CONST from './Services/CONST';
 
 
-const reducerPrueba = (state = [0], action) => {
+const reducerPrueba = (state = null, action) => {
   switch (action.type) {
     case 'AUMENTAR_REDUCER_PRUEBA':
       return [...state, 1];
@@ -15,9 +15,12 @@ const reducerPrueba = (state = [0], action) => {
 };
 
 const reducerSesion = (state = null, action) => {
+  console.log("antes");
+  console.log(action);
+  console.log("despues");
   switch (action.type) {
     case CONST.SET_SESSION:
-      return action.user;
+      return action.usuario;
     case CONST.CLOSE_SESSION:
       return null;
     default:
@@ -28,6 +31,7 @@ const reducerSesion = (state = null, action) => {
 const sagaMiddleware = createMiddleware();
 
 const reducers = combineReducers({
+  reducerSesion,
   reducerPrueba,
   form,
 
