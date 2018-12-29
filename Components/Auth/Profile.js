@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Text, View, StyleSheet, Button,
 } from 'react-native';
+import { auth } from '../../Store/Services/Firebase';
 
 export default class Profile extends Component {
   render() {
@@ -12,6 +13,10 @@ export default class Profile extends Component {
         <Button
           title="Post"
           onPress={() => { navigation.navigate('Post'); }}
+        />
+         <Button
+          title="Exit"
+          onPress={() => { auth.signOut(); }}
         />
       </View>
     );

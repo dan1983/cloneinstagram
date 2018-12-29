@@ -30,4 +30,4 @@ const PathAuthenticated = createBottomTabNavigator({
   },
 
 });
-export { PathAuthenticated };
+export default PathAuthenticated ;

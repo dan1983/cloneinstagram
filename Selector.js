@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {View,Text, StyleSheet } from 'react-native'
 import {connect} from 'react-redux'
 import { auth } from './Store/Services/Firebase';
-import { PathNotAutenticated } from './Components/notAuth/PathNotAuthenticated';
-import { PathAutenticated } from './Components/Auth/PathAuthenticated';
+import  PathNotAutenticated  from './Components/notAuth/PathNotAuthenticated';
+import PathAutenticated  from './Components/Auth/PathAuthenticated';
 import { actionSetSession, actionCloseSession} from './Store/Services/ACTIONS';
 
  class Selector extends Component {
@@ -15,7 +15,8 @@ import { actionSetSession, actionCloseSession} from './Store/Services/ACTIONS';
   render() {
     return (
       <View style={styles.container}>
-      {this.props.usuario? <PathAutenticated/> : <PathNotAutenticated/> }
+
+      {this.props.user? <PathAutenticated/> : <PathNotAutenticated/> }
             
       </View>
     )
@@ -44,7 +45,7 @@ mapDispatchToProps = (dispatch) =>({
             auth.onAuthStateChanged(function(user){
 
                 if (user) {
-                    console.log(user.toJSON());
+                    //console.log(user.toJSON());
                   
                    dispatch(actionSetSession(user));
                   } else {

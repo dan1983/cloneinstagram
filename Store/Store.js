@@ -15,12 +15,10 @@ const reducerPrueba = (state = null, action) => {
 };
 
 const reducerSesion = (state = null, action) => {
-  console.log("antes");
-  console.log(action);
-  console.log("despues");
+ 
   switch (action.type) {
     case CONST.SET_SESSION:
-      return action.usuario;
+      return action.user;
     case CONST.CLOSE_SESSION:
       return null;
     default:

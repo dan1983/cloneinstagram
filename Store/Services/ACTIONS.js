@@ -10,9 +10,9 @@ export const actionLogin = values =>({
     data: values
 });
 
-export const actionSetSession = usuario => ({
+export const actionSetSession = user => ({
     type: CONST.SET_SESSION,
-    usuario,
+    user,
   });
   
 export const actionCloseSession = () => ({
