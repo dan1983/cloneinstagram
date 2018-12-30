@@ -3,6 +3,7 @@ import {
   View, Text, StyleSheet, TextInput, Button,
 } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
+import SelectImg from './../../SelectImg'
 
 
 const fieldName = props => (
@@ -60,7 +61,8 @@ const validate = (values) => {
 };
 
 const SignUpForm = props => (
-  <View>
+  <View style={styles.container}>
+   <SelectImg/>
     <Field name="name" component={fieldName} ph="name" />
     <Field name="email" component={fieldName} ph="email" />
     <Field name="password" component={fieldName} ph="******" />
@@ -92,6 +94,7 @@ const SignUpForm = props => (
 );
 
 const styles = StyleSheet.create({
+  container:{flex:3},
   textInput: {
     marginBottom: 16,
     borderBottomColor: '#bbb',

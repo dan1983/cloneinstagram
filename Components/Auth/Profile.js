@@ -16,7 +16,8 @@ export default class Profile extends Component {
         />
          <Button
           title="Exit"
-          onPress={() => { auth.signOut(); }}
+          onPress={() => { auth.signOut(); 
+          }}
         />
       </View>
     );
