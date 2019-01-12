@@ -4,9 +4,17 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import SignUpForm from './Form/SignUpForm';
-import { actionRegistro } from '../../Store/Services/ACTIONS';
+import { actionRegistro,actionLoadImgSignUp,actionClearImgSignUp } from '../../Store/Services/ACTIONS';
+import SelectImg from '../SelectImg';
+import {blur,change} from 'redux-form';
 
 class SignUp extends Component {
+
+  componentWillUnmount() {
+    this.props.cleanImg();
+  }
+  
+
 registerUser = (values) => {
   this.props.register(values);
 }
@@ -16,7 +24,10 @@ render() {
   return (
     <View style={styles.container}>
       <Text>SignUp</Text>
-      <SignUpForm register={this.registerUser} />
+     
+    
+      <SelectImg img={this.props.image.image} load={this.props.loadImg}/>
+      <SignUpForm register={this.registerUser}  img={this.props.image.image}/>
       <Button
         title="SignIn"
         onPress={() => navigation.navigate('SignIn')}
@@ -39,13 +50,26 @@ const styles = StyleSheet.create({
 
 const mapStateProps = state => ({
   numero: state.reducerPrueba,
+  image: state.reducerImgSignUp
 });
 
 const mapDispatchProps = dispatch => ({
   register: (values) => {
     dispatch(actionRegistro(values));
   },
+  loadImg: (image) => {
+    dispatch(actionLoadImgSignUp(image));
+    // este es la manera de validad la img video 57  se llama al siguform y ejecuta la validacion
+    dispatch(blur('SignUpFomr','image', Date.now()));
+  
+  },
+  cleanImg: () => {
+    dispatch(actionClearImgSignUp());
+  },
+
 });
+
+
 
 
 export default connect(mapStateProps, mapDispatchProps)(SignUp);

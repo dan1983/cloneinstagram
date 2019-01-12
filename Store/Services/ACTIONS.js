@@ -17,5 +17,15 @@ export const actionSetSession = user => ({
   
 export const actionCloseSession = () => ({
     type:CONST.CLOSE_SESSION
-})
+});
 
+export const actionLoadImgSignUp = image => ({
+    type: CONST.LOAD_IMG_SING,
+    image
+  });
+  
+  export const actionClearImgSignUp = () => ({
+    type: CONST.CLEAR_IMG_SING
+  });
+
+ 

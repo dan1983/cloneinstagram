@@ -1,7 +1,7 @@
-import { takeEvery, call } from 'redux-saga/effects';
-import { auth , dataBase} from '../Services/Firebase';
+import { takeEvery, call,select } from 'redux-saga/effects';
+import { auth , dataBase,storage} from '../Services/Firebase';
 import CONST from '../Services/CONST';
-
+import uuid from 'uuid';
 
 
 const registroEnFirebase = values => (
@@ -42,17 +42,89 @@ const loginEnFirebase = ({ email, password }) => (
 );
 
 
+/*
+const registroFotoCloudinary = (imagen ) => {
+  
+  const { uri, type } = imagen.image;
+  const splitName = uri.split('/');
+  const name = [...splitName].pop();
+
+  const foto = {
+    uri,
+    type,
+    name,
+  };
+  const formImagen = new FormData();
+  formImagen.append('upload_preset', CONST.CLOUD_PRESET);
+  formImagen.append('file', foto);
+
+  return fetch(CONST.CLOUD_IMG, {
+    method: 'POST',
+    body: formImagen,
+  }).then(response => response.json());
+
+
+};
+*/
+
+
+async function registroFotoCloudinary(imagen) {
+  // Why are we using XMLHttpRequest? See:
+  // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+  const { uri, type } = imagen.image;
+  const splitName = uri.split('/');
+  const name = [...splitName].pop();
+  const blob = await new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      resolve(xhr.response);
+    };
+    xhr.onerror = function(e) {
+      console.log(e);
+      reject(new TypeError('Network request failed'));
+    };
+    xhr.responseType = 'blob';
+    xhr.open('GET', uri, true);
+    xhr.send(null);
+  });
+
+  const ref = 
+    storage
+    .ref()
+    .child(uuid.v4());
+  const snapshot = await ref.put(blob);
+
+  // We're done with the blob, close and release it
+  blob.close();
+
+  return await snapshot.ref.getDownloadURL();
+}
 function* generateRegister(values) {
   try {
+    //cargar foto
+
+    // con select tengo acceso al store 
+    console.log("siiiiiiyea");
+    
+    console.log("nooooooo");
+
+    const img = yield select((state )=> state.reducerImgSignUp);
+   
+    console.log(img);
+    
+
+    const urlPicture = yield call(registroFotoCloudinary,img);
+    
+   /*
   const registro = yield call(registroEnFirebase, values.data);
-  //console.log("registro", registro); // TODO: Remove
+  
   const { uid,email} = registro.user;
 
   const { data: { name } } = values; 
 
   yield call(registroEnBaseDeDatos, { uid ,name,email});
  
-  
+  */
 
   console.log("OK registe user DB"); // TODO: Remove
   }catch(error) {

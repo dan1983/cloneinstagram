@@ -3,7 +3,7 @@ import {
   View, Text, StyleSheet, TextInput, Button,
 } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import SelectImg from './../../SelectImg'
+
 
 
 const fieldName = props => (
@@ -20,13 +20,22 @@ const fieldName = props => (
       onBlur={props.input.onBlur}
     />
     {props.meta.touched && props.meta.error && <Text>{props.meta.error}</Text>}
+
+
   </View>
-
-
 );
 
-const validate = (values) => {
+const fieldImg = props => (
+      <View><View>
+        {props.meta.touched && 
+           props.meta.error && <Text style={styles.errors}>{props.meta.error}</Text>}
+      </View></View>);
+
+const validate = (values,props) => {
   const errors = {};
+  if(!props.img){
+    errors.image = 'imagen es requerida';
+  }
   if (!values.name) {
     errors.name = 'required';
   } else if (values.name.length < 4) {
@@ -62,14 +71,14 @@ const validate = (values) => {
 
 const SignUpForm = props => (
   <View style={styles.container}>
-   <SelectImg/>
+    <Field name="image" component={fieldImg} />
     <Field name="name" component={fieldName} ph="name" />
     <Field name="email" component={fieldName} ph="email" />
     <Field name="password" component={fieldName} ph="******" />
     <Field name="confirmPassword" component={fieldName} ph="******" />
 
     <Button
-      title="Siginsiii"
+      title="Register"
       onPress={props.handleSubmit(props.register,
         /*
         (values) => {
