@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 
-import { PathAuthenticated } from './Components/Auth/PathAuthenticated';
+
 import Store from './Store/Store';
 import Selector from './Selector';
-
 
 
 export default class App extends React.Component {
@@ -21,7 +20,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Provider store={Store}>
-        <Selector/>
+          <Selector />
 
         </Provider>
       </View>

@@ -16,7 +16,7 @@ const registroEnFirebase = values => (
 
 );
 
-const registroEnBaseDeDatos = ({ uid, name,email,}) => (
+const registroEnBaseDeDatos = ({ uid, name,email,urlPicture}) => (
   /** TODO_PRS
    * Registro en database de firebase (Video 47 Min 9)
    * Para crear el registro, indicamos que campo de la DB de firebase (ref(ruta/id))
@@ -27,7 +27,7 @@ const registroEnBaseDeDatos = ({ uid, name,email,}) => (
   dataBase.ref(`usuarios/${uid}`).set({
       name,
       email,
-     
+      urlPicture
   })
 );
 
@@ -110,21 +110,23 @@ function* generateRegister(values) {
 
     const img = yield select((state )=> state.reducerImgSignUp);
    
-    console.log(img);
+    
     
 
     const urlPicture = yield call(registroFotoCloudinary,img);
+
+    console.log(urlPicture);
     
-   /*
+   
   const registro = yield call(registroEnFirebase, values.data);
   
   const { uid,email} = registro.user;
 
   const { data: { name } } = values; 
 
-  yield call(registroEnBaseDeDatos, { uid ,name,email});
+  yield call(registroEnBaseDeDatos, { uid ,name,email,urlPicture});
  
-  */
+  
 
   console.log("OK registe user DB"); // TODO: Remove
   }catch(error) {

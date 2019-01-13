@@ -5,6 +5,7 @@ import { ImagePicker } from 'expo';
 const SelectImg = (props) => {
   const SelectImg = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes:"All",
       allowsEditing: true,
       aspect: [4, 3],
     });
